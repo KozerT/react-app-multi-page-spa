@@ -18,11 +18,11 @@ const MainNavigation = () => {
           </li>
           <li>
             <NavLink
-              to="/products"
+              to="/events"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }>
-              Products
+              Events
             </NavLink>
           </li>
         </ul>
