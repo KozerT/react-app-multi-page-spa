@@ -1,5 +1,7 @@
 const EditEventPage = () => {
-  return <div></div>;
+  return <div>
+          <h1>Edit Event page</h1>
+  </div>;
 };
 
 export default EditEventPage;
