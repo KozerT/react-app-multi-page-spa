@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import classes from "./EventForm.module.css";
+
+EventForm.propTypes = {
+  method: PropTypes.func.isRequired,
+  event: PropTypes.object,
+};
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
