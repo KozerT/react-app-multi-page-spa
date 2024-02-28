@@ -1,4 +1,4 @@
-import { useLoaderData, json } from "react-router";
+import { json, useRouteLoaderData } from "react-router";
 import EventItem from "../components/EventItem";
 
 export const loader = async ({ request, params }) => {
@@ -18,7 +18,7 @@ export const loader = async ({ request, params }) => {
 };
 
 const EventDetailPage = () => {
-  const data = useLoaderData();
+  const data = useRouteLoaderData("event-detail");
 
   if (data.isError) {
     return <p>{data.message}</p>;
