@@ -1,4 +1,9 @@
-import { Form, useNavigate, useNavigation } from "react-router-dom";
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import PropTypes from "prop-types";
 import classes from "./EventForm.module.css";
 
@@ -8,6 +13,7 @@ EventForm.propTypes = {
 };
 
 function EventForm({ method, event }) {
+  const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -19,6 +25,13 @@ function EventForm({ method, event }) {
 
   return (
     <Form className={classes.form} method="post">
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
       <p>
         <label htmlFor="title">Title</label>
         <input
