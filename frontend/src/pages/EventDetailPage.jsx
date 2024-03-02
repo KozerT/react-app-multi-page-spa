@@ -54,6 +54,7 @@ export const loader = async ({ request, params }) => {
 };
 
 const loadEvent = async () => {
+  const id = params.eventId;
   const response = await fetch(`http://localhost:8000/events/${id}`);
 
   if (!response.ok) {
