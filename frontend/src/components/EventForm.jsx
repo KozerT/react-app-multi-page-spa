@@ -7,9 +7,10 @@ import {
 import PropTypes from "prop-types";
 import classes from "./EventForm.module.css";
 import { json, redirect } from "react-router";
+import { getAuthToken } from "../util/auth";
 
 EventForm.propTypes = {
-  method: PropTypes.func.isRequired,
+  method: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
   event: PropTypes.object,
 };
 
@@ -105,10 +106,12 @@ export const action = async ({ request, params }) => {
     url = `http://localhost:8000/events/${eventId}`;
   }
 
+  const token = getAuthToken();
   const response = await fetch(url, {
     method: method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer" + token,
     },
     body: JSON.stringify(eventData),
   });
