@@ -5,6 +5,9 @@ const AuthForm = () => {
   const data = useActionData();
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
+
+  const isSubmitting = navigator.state === "submitting";
+
   return (
     <>
       <Form method="post" className={classes.form}>
@@ -41,7 +44,9 @@ const AuthForm = () => {
           <Link to={`?mode=${isLogin ? "signup" : "login"}`}>
             {isLogin ? "Create new user" : "Login"}
           </Link>
-          <button>Save</button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Submitting" : "Save"}
+          </button>
         </div>
       </Form>
     </>
